@@ -7,4 +7,8 @@ ce site est un site de covoiturage
 npm install bootstrap
 npm i bootstrap-icons
 
+# extention
+
+live Sass Compiler
+
 # déploiement
