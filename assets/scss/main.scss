@@ -1,7 +1,15 @@
 @import url(../../node_modules/bootstrap-icons/font/bootstrap-icons.css);
 @import'custom';
 
- 
+ //FONT
+ a{
+    font-family: $font-family-serif;
+    font-size: 16px; 
+ }
+
+ //HTML
+
+
 //HEADER
  //navbar
 .navbar-nav {
@@ -27,7 +35,67 @@
     filter: invert(1); // Rend l'icône blanche
 }
 
+//PAGE ACCUEIL
 
+// Conteneur principal
+ 
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    gap: 15px;
+    width: 100%;
+    max-width:100%;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+     
+
+    @media (min-width: 768px) { // Dès la taille MD (Tablette)
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.input-group {
+    display: flex;
+    align-items:center;
+    background-color:$secondary;  
+    padding: 12px 15px;
+    border-radius: 27px;
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid #4F4F4F;
+    transition: 0.3s;
+
+    i {
+        color:red;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    input {
+        border: none;
+       background: transparent;
+       max-width: 150px;
+    }
+}
+
+.search-button button {
+    background-color:$tertiary;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 19px;
+    width: 100%;
+    max-width: 380px;
+    cursor: pointer;
+}
+
+.search-button button:hover {
+    background-color: #cc7700;
+}
 
 html{
     position: relative;
