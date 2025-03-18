@@ -11996,22 +11996,25 @@ a {
   filter: invert(1);
 }
 
-.search-container {
+.search-container, .search-container2 {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row; /* Par défaut : en ligne (Desktop) */
+  justify-content: center;
   gap: 15px;
   width: 100%;
   max-width: 100%;
   padding: 15px;
-  margin-top: 30px;
   margin-bottom: 10px;
 }
-@media (min-width: 768px) {
-  .search-container {
-    flex-direction: row;
-    justify-content: center;
+@media (max-width: 767px) {
+  .search-container, .search-container2 { /* En dessous de 768px (Mobile) */
+    flex-direction: column; /* Passe en colonne pour mobile */
+    justify-content: space-between;
   }
+}
+
+.search-container {
+  margin-top: 30px;
 }
 
 .input-group {
@@ -12036,7 +12039,7 @@ a {
   max-width: 150px;
 }
 
-.search-button button {
+.search-button button, .search-button2 button {
   background-color: #F59D19;
   color: black;
   border: none;
@@ -12050,6 +12053,32 @@ a {
 
 .search-button button:hover {
   background-color: #cc7700;
+}
+
+.filter-container, .dropdown, .search-button2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 40px;
+  width: 100%;
+  max-width: 100%;
+  padding: 25px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .filter-container, .dropdown, .search-button2 { /* En dessous de 768px (Mobile) */
+    flex-direction: column; /* Passe en colonne pour mobile */
+    justify-content: space-between;
+  }
+}
+
+.btn-secondary.dropdown-toggle {
+  height: 50px; /* Change la hauteur selon ton besoin */
+  line-height: 50px; /* Centre le texte verticalement */
+  padding: 0 15px; /* Ajuste l'espacement intérieur */
+  width: auto; /* Largeur selon le texte */
+  min-width: 275px; /* Largeur minimale */
+  max-width: 300px; /* Largeur maximale */
 }
 
 html {
