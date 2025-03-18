@@ -1,7 +1,18 @@
 @import url(../../node_modules/bootstrap-icons/font/bootstrap-icons.css);
 @import'custom';
 
-
-footer{
-    color: red;
+ 
+//HEADER
+.navbar-nav {
+    gap: 80px; /* Ajuste l'espacement entre les éléments */
 }
+.navbar-nav li:last-child {
+    margin-right: 40px; /* Évite un espace inutile à la fin */
+}
+.navbar-nav .nav-link {
+    color: white !important; /* Force la couleur blanche */
+}
+.navbar-nav .nav-link:hover {
+    color: #ddd !important; /* Légère variation au survol */
+}
+
