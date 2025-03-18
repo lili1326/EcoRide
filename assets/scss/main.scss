@@ -37,7 +37,7 @@
 
 //PAGE ACCUEIL
 
-// Conteneur principal
+// Conteneur trajet 
  
 .search-container {
     display: flex;
@@ -97,14 +97,25 @@
     background-color: #cc7700;
 }
 
+
+
 html{
     position: relative;
     min-height: 100%;
 }
 
 main{
-    margin-bottom: 85px;
+    margin-bottom: 165px;
 }
+
+//conteneir texte -image
+
+.text-justify{
+    text-align: justify;
+$font-family-serif:"Roboto",serif !default;
+ 
+}
+ 
 
 //FOOTER
 footer.footer{

@@ -12058,7 +12058,11 @@ html {
 }
 
 main {
-  margin-bottom: 85px;
+  margin-bottom: 165px;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 footer.footer {
