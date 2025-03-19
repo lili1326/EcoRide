@@ -12055,32 +12055,110 @@ a {
   background-color: #cc7700;
 }
 
-.filter-container, .dropdown, .search-button2 {
+.text-justify {
+  background-color: #A0B261;
+}
+
+.search-container2 {
+  padding: 40px;
+  padding: 40px;
+}
+
+.filter-container, .dropdown {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  gap: 40px;
+  align-items: center;
+  gap: 10px;
   width: 100%;
-  max-width: 100%;
-  padding: 25px;
+  padding: 5px;
   margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 @media (max-width: 767px) {
-  .filter-container, .dropdown, .search-button2 { /* En dessous de 768px (Mobile) */
+  .filter-container, .dropdown { /* En dessous de 768px (Mobile) */
     flex-direction: column; /* Passe en colonne pour mobile */
     justify-content: space-between;
   }
+}
+
+.search-button2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .btn-secondary.dropdown-toggle {
   height: 50px; /* Change la hauteur selon ton besoin */
   line-height: 50px; /* Centre le texte verticalement */
   padding: 0 15px; /* Ajuste l'espacement intérieur */
-  width: auto; /* Largeur selon le texte */
-  min-width: 275px; /* Largeur minimale */
-  max-width: 300px; /* Largeur maximale */
+  width: 100%; /* Largeur selon le texte */
 }
 
+.listCovoiturage {
+  font-family: Arial, sans-serif;
+  background-color: #A0B261;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-top: 40px;
+}
+
+.containerList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 40px;
+  margin-bottom: 30px;
+  padding-top: 40px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card {
+  background: #D6D8AF;
+  padding: 20px 0;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+p {
+  background: #FFFFFF;
+  margin: 20px 0;
+}
+
+button {
+  background: #F59D19;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  width: 50%;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+}
 html {
   position: relative;
   min-height: 100%;
