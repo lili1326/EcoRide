@@ -11971,6 +11971,19 @@ a {
   font-size: 16px;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  margin-bottom: 165px;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
 .navbar-nav {
   gap: 80px; /* Ajuste l'espacement entre les éléments */
   margin-top: 25px;
@@ -12059,6 +12072,10 @@ a {
   background-color: #A0B261;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .search-container2 {
   padding: 40px;
   padding: 40px;
@@ -12125,14 +12142,17 @@ a {
   margin-bottom: 10px;
 }
 
-.card {
+.card, .cardCarPreference, .cardAvis {
   background: #D6D8AF;
   padding: 20px 0;
   border-radius: 10px;
-  text-align: center;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 50px;
+}
+
+.card {
+  text-align: center;
 }
 
 p {
@@ -12159,19 +12179,6 @@ button {
     width: 90%;
   }
 }
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-main {
-  margin-bottom: 165px;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
 footer.footer {
   padding: 15px;
   position: absolute;
@@ -12186,4 +12193,27 @@ footer.footer {
 
 .footer a:hover {
   color: #ddd !important; /* Légère variation au survol */
+}
+
+.cardCarPreference .car, .preference {
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.car span:first-child, .preference span:first-child {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.cardAvis {
+  max-height: 514px; /* Hauteur max avant scroll */
+  overflow-y: auto; /* Ajoute un scroll vertical */
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 90%; /* Largeur adaptative */
+  max-width: 400px; /* Empêche qu'elle devienne trop large */
+  margin: 0 auto; /* Centre la div */
+  /* Scroll personnalisé pour Firefox */
+  scrollbar-width: thin; /* Taille de la barre */
+  scrollbar-color: #F59D19 #F59D19; /* (Couleur de la barre, Couleur du fond) */
 }

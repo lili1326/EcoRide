@@ -9,9 +9,26 @@
 
  //HTML
 
+ 
+html{
+    position: relative;
+    min-height: 100%;
+}
 
-//HEADER
- //navbar
+main{
+    margin-bottom: 165px;
+}
+
+
+//conteneir texte -image
+
+.text-justify{
+    text-align: justify;
+$font-family-serif:"Roboto",serif !default;
+ 
+}
+
+//PAGE ACCEUIL - navbar
 .navbar-nav {
     gap: 80px; /* Ajuste l'espacement entre les éléments */
     margin-top: 25px;   
@@ -30,14 +47,11 @@
 .navbar-toggler {
     border-color: white !important; // Bordure blanche du bouton
 }
-
 .navbar-toggler-icon {
     filter: invert(1); // Rend l'icône blanche
 }
 
-//PAGE ACCUEIL
-
-// Conteneur trajet 
+//PAGE ACCUEIL-Conteneur trajet 
  
 .search-container,.search-container2{
     display: flex;
@@ -99,6 +113,14 @@
 }
 .text-justify{
     background-color: $primary;
+}
+
+//PAGE ACCUEIL -contenaire texte -image
+
+.text-justify{
+text-align: justify;
+$font-family-serif:"Roboto",serif !default;
+ 
 }
 
 
@@ -178,15 +200,18 @@
      margin-bottom: 10px;
 
 }
-.card {
+.card, .cardCarPreference ,.cardAvis{
     background: $secondary;
     padding: 20px 0;
     border-radius: 10px;
-    text-align: center;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 50px;
 }
+.card{
+    text-align: center;
+}
+
 
 p {
     background:$background;
@@ -212,26 +237,8 @@ button {
         width: 90%;
     }
 }
-
-
-html{
-    position: relative;
-    min-height: 100%;
-}
-
-main{
-    margin-bottom: 165px;
-}
-
-//conteneir texte -image
-
-.text-justify{
-    text-align: justify;
-$font-family-serif:"Roboto",serif !default;
  
-}
  
-
 //FOOTER
 footer.footer{
     padding: 15px;
@@ -249,3 +256,28 @@ footer.footer{
 }
 
 
+//PAGE VUE DETAILLEE COVOITURAGE -card
+
+
+.cardCarPreference .car ,.preference{
+  padding-left: 20px;
+  line-height: 2;
+}
+.car span:first-child , .preference span:first-child{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.cardAvis {
+    max-height: 514px; /* Hauteur max avant scroll */
+    overflow-y: auto; /* Ajoute un scroll vertical */
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 90%; /* Largeur adaptative */
+    max-width: 400px; /* Empêche qu'elle devienne trop large */
+    margin: 0 auto; /* Centre la div */
+
+  /* Scroll personnalisé pour Firefox */
+  scrollbar-width: thin; /* Taille de la barre */
+  scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
+}

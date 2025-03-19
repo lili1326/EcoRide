@@ -47,14 +47,38 @@ const LoadContentPage = async () => {
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
-const routeEvent = (event) => {
-  event = event || window.event;
-  event.preventDefault();
+//const routeEvent = (event) => {
+ // event = event || window.event;
+ // event.preventDefault();
   // Mise à jour de l'URL dans l'historique du navigateur
-  window.history.pushState({}, "", event.target.href);
+ // window.history.pushState({}, "", event.target.href);
   // Chargement du contenu de la nouvelle page
-  LoadContentPage();
+//  LoadContentPage();
+//};
+
+//fonction pour que au onclic le routeur se déclenche
+const routeEvent = (event) => {
+  event.preventDefault();
+
+  let url = event.target.getAttribute("data-url");
+  if (!url) {
+    url = event.target.closest("button").getAttribute("data-url");
+  }
+
+  if (url) {
+    window.history.pushState({}, "", url);
+    LoadContentPage(); // Recharge la page avec le bon contenu
+  }
 };
+
+window.route = routeEvent;
+
+
+
+
+
+
+
 
 // Gestion de l'événement de retour en arrière dans l'historique du navigateur
 window.onpopstate = LoadContentPage;
@@ -62,3 +86,4 @@ window.onpopstate = LoadContentPage;
 window.route = routeEvent;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
+ 

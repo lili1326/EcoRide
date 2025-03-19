@@ -6,3 +6,4 @@ export default class Route {
       this.pathJS = pathJS;
     }
 }
+ 
