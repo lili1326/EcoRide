@@ -4,12 +4,29 @@
  //FONT
  a{
     font-family: $font-family-serif;
-    font-size: 16px; 
+    font-weight: 300;
+    font-style: oblique;
  }
+
+ h1{
+    font-family: $font-family-sans-serif;
+    font-weight: 700;
+    font-style: italic;
+ }
+ h3{
+    font-family: $font-family-sans-serif;
+ }
+ p{
+    font-family: $font-family-serif; 
+    
+ }
+ .button{
+    font-family: $font-family-sans-serif; 
+ }
+
 
  //HTML
 
- 
 html{
     position: relative;
     min-height: 100%;
@@ -18,20 +35,14 @@ html{
 main{
     margin-bottom: 165px;
 }
-
-
-//conteneir texte -image
-
-.text-justify{
-    text-align: justify;
-$font-family-serif:"Roboto",serif !default;
- 
+ //PAGE ACCEUIL - navbar
+ .navbar {
+    padding: 10px 15px; // Ajoute un peu d’espace pour éviter que les éléments ne se serrent trop
+     
 }
-
-//PAGE ACCEUIL - navbar
 .navbar-nav {
-    gap: 80px; /* Ajuste l'espacement entre les éléments */
-    margin-top: 25px;   
+    gap: 20px; /* Ajuste l'espacement entre les éléments */
+       
 }
 .navbar-nav li:last-child {
     margin-right: 40px; /* Évite un espace inutile à la fin */
@@ -46,9 +57,14 @@ $font-family-serif:"Roboto",serif !default;
 //menu burger
 .navbar-toggler {
     border-color: white !important; // Bordure blanche du bouton
+     margin-inline-start: 20%;
 }
 .navbar-toggler-icon {
-    filter: invert(1); // Rend l'icône blanche
+    filter: invert(1); // Rend l'icône blanche 
+}
+
+.container-fluid ,.img{
+   padding-left: 30px;
 }
 
 //PAGE ACCUEIL-Conteneur trajet 
@@ -97,7 +113,9 @@ $font-family-serif:"Roboto",serif !default;
     }
 }
 
-.search-button button ,.search-button2 button {
+.search-button button,.search-button2  {
+    display: inline-block;
+    margin: 0 auto;
     background-color:$tertiary;
     color: black;
     border: none;
@@ -108,19 +126,15 @@ $font-family-serif:"Roboto",serif !default;
     max-width: 380px;
     cursor: pointer;
 }
-.search-button button:hover {
-    background-color: #cc7700;
-}
-.text-justify{
-    background-color: $primary;
-}
 
+.search-button button:hover {
+    background-color:  $primary;
+}
 //PAGE ACCUEIL -contenaire texte -image
 
 .text-justify{
-text-align: justify;
-$font-family-serif:"Roboto",serif !default;
- 
+//text-align: justify;
+background-color: $primary; 
 }
 
 
@@ -130,8 +144,15 @@ $font-family-serif:"Roboto",serif !default;
     padding: 40px;
     padding: 40px;
 }
+
+.btn-secondary.dropdown-toggle, .button .search-button2 {
+    height: 50px; /* Change la hauteur selon ton besoin */
+    line-height: 50px; /* Centre le texte verticalement */
+    padding: 0 15px; /* Ajuste l'espacement intérieur */
+    width: 100%; /* Largeur selon le texte */   
+}
  
-.filter-container ,.dropdown  {
+.filter-container ,.dropdown ,.search-button2 button {
     display: flex;
     flex-direction: row;  
     justify-content:space-around;
@@ -146,28 +167,11 @@ $font-family-serif:"Roboto",serif !default;
 
     @media (max-width: 767px) { /* En dessous de 768px (Mobile) */
         flex-direction: column; /* Passe en colonne pour mobile */
-        justify-content: space-between;
-       
+        justify-content: space-between;  
     }
 }
- .search-button2{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-
- }
-
-.btn-secondary.dropdown-toggle {
-    height: 50px; /* Change la hauteur selon ton besoin */
-    line-height: 50px; /* Centre le texte verticalement */
-    padding: 0 15px; /* Ajuste l'espacement intérieur */
-    width: 100%; /* Largeur selon le texte */
-    //min-width: 255px; /* Largeur minimale */
-    //max-width: 300px; /* Largeur maximale */
-
-   
-}
  
+
 
 // PAGE CONVOITURAGE -liste covoiturage
 
@@ -212,7 +216,6 @@ $font-family-serif:"Roboto",serif !default;
     text-align: center;
 }
 
-
 p {
     background:$background;
     margin: 20px 0;
@@ -238,7 +241,31 @@ button {
     }
 }
  
- 
+//PAGE VUE DETAILLEE COVOITURAGE -card
+
+.cardCarPreference .car ,.preference{
+  padding-left: 20px;
+  line-height: 2;
+}
+.car span:first-child , .preference span:first-child{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.cardAvis {
+    max-height: 535.6px; /* Hauteur max avant scroll */
+    overflow-y: auto; /* Ajoute un scroll vertical */
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%; /* Largeur adaptative */
+    max-width: 400px; /* Empêche qu'elle devienne trop large */
+    margin: 0 auto; /* Centre la div */
+
+  /* Scroll personnalisé pour Firefox */
+  scrollbar-width: thin; /* Taille de la barre */
+  scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
+}
+
 //FOOTER
 footer.footer{
     padding: 15px;
@@ -253,31 +280,4 @@ footer.footer{
 
 .footer a:hover {
     color: #ddd !important; /* Légère variation au survol */
-}
-
-
-//PAGE VUE DETAILLEE COVOITURAGE -card
-
-
-.cardCarPreference .car ,.preference{
-  padding-left: 20px;
-  line-height: 2;
-}
-.car span:first-child , .preference span:first-child{
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.cardAvis {
-    max-height: 514px; /* Hauteur max avant scroll */
-    overflow-y: auto; /* Ajoute un scroll vertical */
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 90%; /* Largeur adaptative */
-    max-width: 400px; /* Empêche qu'elle devienne trop large */
-    margin: 0 auto; /* Centre la div */
-
-  /* Scroll personnalisé pour Firefox */
-  scrollbar-width: thin; /* Taille de la barre */
-  scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
 }
