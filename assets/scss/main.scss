@@ -234,6 +234,15 @@ button {
     margin-top: 20px;
 }
 
+.profileAccount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; // espace entre input et image
+    flex-wrap: wrap; // permet de passer en colonne sur petits écrans
+    padding: 1rem;
+}
+
 @media (max-width: 600px) {
     .container {
         grid-template-columns: 1fr;
@@ -266,7 +275,7 @@ button {
   scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
 }
 
-//connection
+// CONNECTION
 
 .form-label{
     margin-top: 20px;
@@ -274,6 +283,70 @@ button {
     font-size:20px ;
 }
 
+.actionButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; // espace entre les boutons
+    margin-top: 2rem;
+     
+}
+ 
+button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
+    min-width: 220px;
+    //font-weight: bold;
+    border-radius: 8px;
+     margin-inline-start: auto;
+     
+  }  
+  button.btn.btn-tertiary{
+    background-color: $tertiary;
+  }
+
+
+//MON ESPACE
+
+.profileAccount{
+    gap:40px;
+
+}
+
+.etatUtilisateur {
+    background-color: $primary;
+    padding: 2rem;
+    margin-top: 25px;
+  
+    .containerEtat {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+  
+    .cardUtilisateur {
+        background-color: $secondary;
+        border-radius: 12px;
+       padding: 2rem 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      justify-content: center;  // centre verticalement
+ // align-items: center;      // centre horizontalement
+  text-align: center;
+   
+        h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1.5rem;
+          color: #1f1f1f;
+          font-family: 'Cabin', sans-serif;
+        }
+      }
+    }
+  
+  
 //FOOTER
 footer.footer{
     padding: 15px;

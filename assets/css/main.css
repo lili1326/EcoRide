@@ -12188,6 +12188,15 @@ button {
   margin-top: 20px;
 }
 
+.profileAccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
 @media (max-width: 600px) {
   .container {
     grid-template-columns: 1fr;
@@ -12221,6 +12230,59 @@ button {
   margin-top: 20px;
   color: #A0B261;
   font-size: 20px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button.btn.btn-danger, button.btn.btn-primary, button.btn.btn-tertiary {
+  min-width: 220px;
+  border-radius: 8px;
+  margin-inline-start: auto;
+}
+
+button.btn.btn-tertiary {
+  background-color: #F59D19;
+}
+
+.profileAccount {
+  gap: 40px;
+}
+
+.etatUtilisateur {
+  background-color: #A0B261;
+  padding: 2rem;
+  margin-top: 25px;
+}
+.etatUtilisateur .containerEtat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.etatUtilisateur .cardUtilisateur {
+  background-color: #D6D8AF;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.etatUtilisateur .cardUtilisateur h3, .etatUtilisateur .cardUtilisateur .h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #1f1f1f;
+  font-family: "Cabin", sans-serif;
 }
 
 footer.footer {

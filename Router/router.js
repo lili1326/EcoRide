@@ -26,21 +26,37 @@ const LoadContentPage = async () => {
   const path = window.location.pathname;
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
+  console.log("Route actuelle :", actualRoute);
   // Récupération du contenu HTML de la route
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
 
   // Ajout du contenu JavaScript
-  if (actualRoute.pathJS != "") {
+  //if (actualRoute.pathJS != "") {
     // Création d'une balise script
-    var scriptTag = document.createElement("script");
-    scriptTag.setAttribute("type", "text/javascript");
-    scriptTag.setAttribute("src", actualRoute.pathJS);
-
+   // var scriptTag = document.createElement("script");
+   // scriptTag.setAttribute("type", "text/javascript");
+    //scriptTag.setAttribute("src", actualRoute.pathJS);
+    //scriptTag.setAttribute("defer", true); // pour être sûr qu’il se charge après l’injection HTML
+  
     // Ajout de la balise script au corps du document
-    document.querySelector("body").appendChild(scriptTag);
+   // document.querySelector("body").appendChild(scriptTag);
+//}
+
+// Attendre que le HTML soit bien rendu avant d'exécuter le JS
+setTimeout(() => {
+  if (actualRoute.pathJS && actualRoute.pathJS !== "") {
+    const scriptTag = document.createElement("script");
+    scriptTag.setAttribute("type", "module");
+    scriptTag.setAttribute("src", actualRoute.pathJS);
+    document.body.appendChild(scriptTag);
+    console.log("Script ajouté dynamiquement :", actualRoute.pathJS);
   }
+}, 50); // petit délai pour laisser le temps au DOM d'être intégré
+
+
+
 
   // Changement du titre de la page
   document.title = actualRoute.title + " - " + websiteName;
