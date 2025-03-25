@@ -101,3 +101,13 @@ document.getElementById("vehicules-container").addEventListener("click", functio
 document.getElementById("selectVehicule").addEventListener("change", function () {
   afficherVehicule(this.value);
 });
+
+
+document.getElementById("form-trajet").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    console.log("Trajet proposé :", data);
+    alert("Trajet mis en ligne !");
+  });
+  

@@ -355,8 +355,8 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
 
   .container-row {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-evenly;
+     
     gap: 30px;
     background-color:$background;
     padding: 40px;
@@ -378,16 +378,11 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
     font-size: 1.2rem;
   }
   
-  .separator {
-    width: 6px;
-    background-color: #7f9555;
-    height: auto;
-    border-radius: 4px;
-  }
+  
   label {
     display: block;
     margin-top: 10px;
-    font-weight: bold;
+     
   }
   input, select, textarea {
     width: 100%;
@@ -395,7 +390,8 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
     margin-top: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid $background;
+    background-color: $background;
   }
   
 
