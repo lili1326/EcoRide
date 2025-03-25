@@ -12217,6 +12217,12 @@ button {
   scrollbar-color: #F59D19 #F59D19; /* (Couleur de la barre, Couleur du fond) */
 }
 
+.form-label {
+  margin-top: 20px;
+  color: #A0B261;
+  font-size: 20px;
+}
+
 footer.footer {
   padding: 15px;
   position: absolute;

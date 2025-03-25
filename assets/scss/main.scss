@@ -266,6 +266,14 @@ button {
   scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
 }
 
+//connection
+
+.form-label{
+    margin-top: 20px;
+    color: $primary;
+    font-size:20px ;
+}
+
 //FOOTER
 footer.footer{
     padding: 15px;
