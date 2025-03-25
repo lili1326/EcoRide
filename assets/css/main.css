@@ -12285,6 +12285,10 @@ button.btn.btn-tertiary {
   font-family: "Cabin", sans-serif;
 }
 
+.btn-acces {
+  width: 100%;
+}
+
 footer.footer {
   padding: 15px;
   position: absolute;

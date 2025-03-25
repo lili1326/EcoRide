@@ -301,6 +301,7 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
   }  
   button.btn.btn-tertiary{
     background-color: $tertiary;
+    
   }
 
 
@@ -346,7 +347,10 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
       }
     }
   
-  
+  .btn-acces{
+    width: 100%;
+  }
+
 //FOOTER
 footer.footer{
     padding: 15px;
