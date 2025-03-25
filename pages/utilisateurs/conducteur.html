@@ -1,1 +1,49 @@
-<h1>conducteur</h1>
+<div class="hero bg-primary p-3 pb-3">
+    <div class="text-center">
+         <h1> Mon espace conducteur</h1>  
+    </div>
+  </div>
+  <div class="container-row">
+    <div class="form-wrapper">
+      <h3>Véhicules</h3> 
+      <form id="form-conducteur">
+        <label for="selectVehicule">Sélectionner un véhicule :</label>
+        <select id="selectVehicule">
+          <option disabled selected value="">-- Choisir un véhicule --</option>
+        </select>
+        
+        <div id="vehicules-container">
+          <!-- Formulaires ou récapitulatifs ici -->
+        </div>
+        <button type="button" id="btn-ajouter-vehicule">+ Ajouter un véhicule</button>
+      </form>
+    </div>
+  
+    <div class="separator"></div>
+  
+    <div class="form-wrapper">
+      <h3>Préférences</h3>
+      <form id="preferences-form">
+        <label>Fumeur:
+          <select name="fumeur">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+        </label>
+        <label>Animaux:
+          <select name="animaux">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+        </label>
+        <label>Musique:
+          <input type="text" name="musique">
+        </label>
+        <label>Divers:
+          <textarea name="divers"></textarea>
+        </label>
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+  

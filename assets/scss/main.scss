@@ -351,6 +351,54 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
     width: 100%;
   }
 
+  //UTILISATEUR CONDUCTEUR
+
+  .container-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    background-color:$background;
+    padding: 40px;
+    flex-wrap: wrap; /* pour responsive */
+    border-radius: 10px;
+  }
+  
+  .container-row form {
+    background-color: $secondary;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .container-row h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .separator {
+    width: 6px;
+    background-color: #7f9555;
+    height: auto;
+    border-radius: 4px;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+
 //FOOTER
 footer.footer{
     padding: 15px;
