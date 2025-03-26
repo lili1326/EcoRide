@@ -111,3 +111,39 @@ document.getElementById("form-trajet").addEventListener("submit", function (e) {
     alert("Trajet mis en ligne !");
   });
   
+// TRAJET 
+
+  function waitForFormAndAttach() {
+    const form = document.getElementById("form-trajet");
+    if (!form) {
+      setTimeout(waitForFormAndAttach, 100); // réessaie toutes les 100ms
+      return;
+    }
+  
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+  
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+  
+      const recapDiv = document.getElementById("recap-trajet");
+      recapDiv.innerHTML = `
+        <h4>🚗 Trajet proposé :</h4>
+        <ul>
+          <li><strong>Départ :</strong> ${data.depart}</li>
+          <li><strong>Arrivée :</strong> ${data.arrivee}</li>
+          <li><strong>Places disponibles :</strong> ${data.places}</li>
+          <li><strong>Prix :</strong> ${data.prix} €</li>
+          <li><strong>Date :</strong> ${data.date}</li>
+          <li><strong>Horaire :</strong> ${data.horaire}</li>
+          <li><strong>Énergie utilisée :</strong> ${data.energie}</li>
+        </ul>
+      `;
+    });
+  
+    console.log("🎉 Événement submit attaché au formulaire !");
+  }
+  
+  // Lance l'attente
+  waitForFormAndAttach();
+  

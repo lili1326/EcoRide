@@ -62,14 +62,18 @@
             <input type="date" name="date" required>
           </label>
           <label>Horaire (format 00h00/00h00):
-            <input type="text" name="horaire" placeholder="08h00/10h30" pattern="\\d{2}h\\d{2}/\\d{2}h\\d{2}" required>
+            <input type="text" name="horaire" placeholder="08h00/10h30"  pattern="^([01][0-9]|2[0-3])h[0-5][0-9]/([01][0-9]|2[0-3])h[0-5][0-9]$"
+            required
+            oninvalid="this.setCustomValidity('Format attendu : 00h00/00h00')"
+            oninput="this.setCustomValidity('')">
           </label>
           <label>Énergie utilisée:
             <input type="text" name="energie" required>
           </label>
           <button type="submit" id="btn-trajetEnLigne">Mettre en ligne</button>
         </form>
-      </div>
-      
+      </div>    
   </div>
+  <!-- Zone d'affichage du récapitulatif -->
+<div id="recap-trajet" style="margin-top: 20px; font-family: sans-serif;"></div>
   
