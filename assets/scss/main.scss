@@ -292,7 +292,7 @@ button {
      
 }
  
-button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
+button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-primary {
     min-width: 220px;
     //font-weight: bold;
     border-radius: 8px;
@@ -309,7 +309,6 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
 
 .profileAccount{
     gap:40px;
-
 }
 
 .etatUtilisateur {

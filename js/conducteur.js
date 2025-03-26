@@ -1,3 +1,6 @@
+
+//VEHICULE
+
 let vehiculeIndex = 0;
 
 function ajouterVehicule() {
@@ -103,6 +106,8 @@ document.getElementById("selectVehicule").addEventListener("change", function ()
 });
 
 
+// TRAJET 
+
 document.getElementById("form-trajet").addEventListener("submit", function (e) {
     e.preventDefault();
     const formData = new FormData(this);
@@ -110,8 +115,6 @@ document.getElementById("form-trajet").addEventListener("submit", function (e) {
     console.log("Trajet proposé :", data);
     alert("Trajet mis en ligne !");
   });
-  
-// TRAJET 
 
   function waitForFormAndAttach() {
     const form = document.getElementById("form-trajet");
@@ -141,7 +144,7 @@ document.getElementById("form-trajet").addEventListener("submit", function (e) {
       `;
     });
   
-    console.log("🎉 Événement submit attaché au formulaire !");
+ 
   }
   
   // Lance l'attente

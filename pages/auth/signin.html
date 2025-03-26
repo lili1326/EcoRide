@@ -8,24 +8,26 @@
     <form>
       <div class="mb-3">
         <label for="PseudolInput" class="form-label">Pseudo</label>
-        <input type="text" class="form-control" id="PseudoInput" placeholder="Pseudo" name="Pseudo"> 
+        <input type="text" class="form-control" id="PseudoInput" placeholder="Pseudo" name="Pseudo" value="lili"> 
         <div class="invalid-feedback">
           Le Pseudo doit être rempli
         </div>
       </div>
         <div class="mb-3">
           <label for="EmailInput" class="form-label">Email</label>
-          <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr" name="Email"> 
+          <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr" name="Email" value="lili@li.com"> 
           <div class="invalid-feedback">
             Le mail et le mot de passe ne correpondent pas
           </div>
         </div>
         <div class="mb-3">
           <label for="PasswordInput" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="PasswordInput" name="Password">
+          <input type="password" class="form-control" id="PasswordInput" name="Password" value="123">
         </div>
         <div class="text-center">
-            <button type="button" class="btn btn-primary" id="btnInscription">Connexion</button>
+          <div class="text-center">
+            <a href="/account" class="btn btn-primary" id="btnInscription">Connexion</a>
+          </div>
         </div>
     </form>
     <div class="text-center pt-3 fs-4">
