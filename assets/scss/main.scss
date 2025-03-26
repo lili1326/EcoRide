@@ -382,7 +382,7 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
   
   /* Champs côte à côte */
   .form-wrapper form label {
-    flex: 1 1 45%;
+    flex: auto;
     display: flex;
     flex-direction: column;
     min-width: 200px;
@@ -406,6 +406,16 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary {
   }
    
   
+  
+  /* Bouton bien dimensionné */
+  #btn-ajouter-vehicule ,#btn-trajetEnLigne, #btn-regiter-preference{
+     width: 200px;
+     height: 44px;
+  }
+  #btn-ajouter-vehicule{
+    height: 60px;
+  }
+
 
 //FOOTER
 footer.footer{
