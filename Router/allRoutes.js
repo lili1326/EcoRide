@@ -6,7 +6,7 @@ export const allRoutes = [
     new Route("/covoiturage","Covoiturage","/pages/covoiturage.html"),
     new Route("/vueDetaileeCovoiturage","Vue détaillée du Covoiturage","/pages/vueDetaileeCovoiturage.html"),
     new Route("/signin"," Connection","/pages/auth/signin.html"),  
-    new Route("/signinup"," Inscription","/pages/auth/signinup.html"), 
+    new Route("/signinup"," Inscription","/pages/auth/signinup.html","/js/auth/signup.js"), 
     new Route("/account", "Mon espace", "/pages/auth/account.html", "/js/profil.js"),
     new Route("/conducteur"," Conducteur","/pages/utilisateurs/conducteur.html","js/conducteur.js"), 
     new Route("/passager"," Passager","/pages/utilisateurs/passager.html"), 
