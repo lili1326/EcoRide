@@ -1,4 +1,14 @@
  
+ // DECONNECTION
+ const signoutBtn=document.getElementById("signout-btn").addEventListener("click", signout);
+ function signout(){
+    eraseCookie(tokenCookieName);
+    window.location.reload();
+}
+ //stocker en cookie notre token
+const tokenCookieName = "accesstoken";
+
+
 
 //méthode de gestion de cookies placer -récupére-supprimé
 
@@ -11,8 +21,7 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
- //stocker en cookie notre token
-const tokenCookieName = "accesstoken";
+
 
 function getCookie(name) {
     var nameEQ = name + "=";
