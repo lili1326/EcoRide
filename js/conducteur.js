@@ -46,6 +46,16 @@ function ajouterVehicule() {
     <label>Nombre de places disponibles:
       <input type="number" name="vehicule[${vehiculeIndex}][places]" min="1" max="9" required>
     </label>
+    <label>Type de véhicule:
+  <select name="vehicule[${vehiculeIndex}][type]" required>
+    <option value="" disabled selected>-- Choisir un type --</option>
+    <option value="Électrique">Électrique</option>
+    <option value="Hybride">Hybride</option>
+    <option value="Gazoil">Gazoil</option>
+    <option value="Essence">Essence</option>
+    <option value="GPL">GPL</option>
+  </select>
+</label>
     <button type="button" class="valider-vehicule">Valider ce véhicule</button>
   `;
 
@@ -55,13 +65,22 @@ function ajouterVehicule() {
 
 function afficherRecapitulatif(div) {
   const inputs = div.querySelectorAll("input");
+  const selects = div.querySelectorAll("select");
   let recapHTML = "<div class='recap'><strong>Véhicule ajouté :</strong><ul>";
+
   inputs.forEach(input => {
-    const label = input.closest("label")?.textContent.trim().replace(":", "") || input.name;
+    const label = input.closest("label")?.childNodes[0].textContent.trim().replace(":", "") || input.name;
     if (input.type !== "hidden") {
       recapHTML += `<li><strong>${label}:</strong> ${input.value}</li>`;
     }
   });
+
+  selects.forEach(select => {
+    const label = select.closest("label")?.childNodes[0].textContent.trim().replace(":", "") || select.name;
+    const value = select.options[select.selectedIndex]?.textContent || "";
+    recapHTML += `<li><strong>${label}:</strong> ${value}</li>`;
+  });
+
   recapHTML += "</ul></div>";
   div.innerHTML = recapHTML;
 }
