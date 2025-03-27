@@ -6,7 +6,7 @@ const btnSingin = document.getElementById("btnSignin");
 btnSingin.addEventListener("click", checkCredentials);//information de connection
 
 function checkCredentials(){
-  alert("bouton clike");
+ 
     //Ici, il faudra appeler l'API pour vérifier les credentials en BDD
   
     if(mailInput.value == "test@mail.com" && passwordInput.value == "123"){
@@ -16,7 +16,7 @@ function checkCredentials(){
         const token = "lkjsdngfljsqdnglkjsdbglkjqskjgkfjgbqslkfdgbskldfgdfgsdgf";
         setToken(token);
         //placer ce token en cookie
-        //setCookie(RoleCookieName, "admin", 7);
+        setCookie(RoleCookieName, "admin", 7);
         window.location.replace("/account"); 
       }else{
           pseudoInput.classList.add("is-invalid");
