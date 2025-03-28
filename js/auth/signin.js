@@ -16,7 +16,7 @@ function checkCredentials(){
         const token = "lkjsdngfljsqdnglkjsdbglkjqskjgkfjgbqslkfdgbskldfgdfgsdgf";
         setToken(token);
         //placer ce token en cookie
-        setCookie(RoleCookieName, "admin", 7);
+        setCookie(RoleCookieName, "client", 7);
         window.location.replace("/account"); 
       }else{
           pseudoInput.classList.add("is-invalid");
