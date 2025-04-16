@@ -24,6 +24,9 @@
     font-family: $font-family-sans-serif; 
  }
 
+body{
+    background-color:$background;
+}
 
  //HTML
 
@@ -92,11 +95,13 @@ main{
 .input-group {
     display: flex;
     align-items:center;
+    align-content: center;
     background-color:$secondary;  
     padding: 12px 15px;
     border-radius: 27px;
     width: 100%;
     max-width: 360px;
+    height:50px;
     border: 1px solid #4F4F4F;
     transition: 0.3s;
 
@@ -133,15 +138,14 @@ main{
 //PAGE ACCUEIL -contenaire texte -image
 
 .text-justify{
-//text-align: justify;
 background-color: $primary; 
 }
 
+ 
 
 // PAGE COVOITURAGE -filtre
 
 .search-container2{
-    padding: 40px;
     padding: 40px;
 }
 
@@ -159,7 +163,6 @@ background-color: $primary;
     align-items: center;
     gap:10px;
     width: 100%;
-    //max-width: 100%;
     padding: 5px;
     margin-bottom: 10px;
     padding-top: 20px;
@@ -215,12 +218,7 @@ background-color: $primary;
 .card{
     text-align: center;
 }
-
-p {
-    background:$background;
-    margin: 20px 0;
-}
-
+ 
 button {
     background: $tertiary;
     border: none;
@@ -238,9 +236,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; // espace entre input et image
+    gap: 1rem; // espace entre input et image ou 40px
     flex-wrap: wrap; // permet de passer en colonne sur petits écrans
     padding: 1rem;
+}
+p{
+    background-color: $background;
 }
 
 @media (max-width: 600px) {
@@ -262,7 +263,7 @@ button {
 }
 
 .cardAvis {
-    max-height: 535.6px; /* Hauteur max avant scroll */
+    max-height: 500px; /* Hauteur max avant scroll */
     overflow-y: auto; /* Ajoute un scroll vertical */
     border: 1px solid #ccc;
     padding: 10px;
@@ -294,7 +295,6 @@ button {
  
 button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-primary {
     min-width: 220px;
-    //font-weight: bold;
     border-radius: 8px;
      margin-inline-start: auto;
      
@@ -306,10 +306,6 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-
 
 
 //MON ESPACE
-
-.profileAccount{
-    gap:40px;
-}
 
 .etatUtilisateur {
     background-color: $primary;
@@ -333,15 +329,13 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
-      justify-content: center;  // centre verticalement
- // align-items: center;      // centre horizontalement
-  text-align: center;
+         justify-content: center;  // centre verticalement
    
         h3 {
           font-size: 1.3rem;
           margin-bottom: 1.5rem;
           color: #1f1f1f;
-          font-family: 'Cabin', sans-serif;
+          font-family: $font-family-sans-serif;
         }
       }
     }
