@@ -38,7 +38,7 @@ html{
 main{
     margin-bottom: 165px;
 }
- //PAGE ACCEUIL - navbar
+ //HOME - navbar
  .navbar {
     padding: 10px 15px; // Ajoute un peu d’espace pour éviter que les éléments ne se serrent trop
      
@@ -70,7 +70,7 @@ main{
    padding-left: 30px;
 }
 
-//PAGE ACCUEIL-Conteneur trajet 
+//HOME-container-trajet 
  
 .search-container,.search-container2{
     display: flex;
@@ -135,13 +135,59 @@ main{
 .search-button button:hover {
     background-color:  $primary;
 }
-//PAGE ACCUEIL -contenaire texte -image
+ 
+//HOME-CONTAINER-TEXT-IMAG
 
-.text-justify{
-background-color: $primary; 
+.container-text-imag-1, .container-text-imag-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: auto;
+    padding: 24px;
+   margin-left: 150px;
+   margin-right: 150px;
+    
+}
+.container-text-left, .container-imag-right,.container-text-right, .container-imag-left{
+    flex: 1 1;
 }
 
- 
+.container-imag-right,.container-imag-left{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+}
+
+.container-text-left,.container-text-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-text-imag-1{
+    background-color: $primary;
+}
+ .text-left,h3{
+    justify-content: center;    
+}
+
+.imag-left{
+    width:400px ;
+}
+
+ .container-text-imag-1,.container-text-imag-2 
+ {
+    @media (max-width: 767px) { /* En dessous de 768px (Mobile) */
+        flex-direction: column; /* Passe en colonne pour mobile */
+        justify-content: space-between;  
+        padding: 5px;
+         margin-bottom: 10px;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin: auto;
+    }
+}
+
 
 // PAGE COVOITURAGE -filtre
 
@@ -155,8 +201,8 @@ background-color: $primary;
     padding: 0 15px; /* Ajuste l'espacement intérieur */
     width: 100%; /* Largeur selon le texte */   
 }
- 
-.filter-container ,.dropdown ,.search-button2 button {
+  
+ .filter-container ,.dropdown ,.search-button2 button {
     display: flex;
     flex-direction: row;  
     justify-content:space-around;
@@ -172,9 +218,7 @@ background-color: $primary;
         flex-direction: column; /* Passe en colonne pour mobile */
         justify-content: space-between;  
     }
-}
- 
-
+} 
 
 // PAGE CONVOITURAGE -liste covoiturage
 
@@ -253,9 +297,15 @@ p{
  
 //PAGE VUE DETAILLEE COVOITURAGE -card
 
+.cardCarPreference{
+    height: 500px;
+}
+
 .cardCarPreference .car ,.preference{
   padding-left: 20px;
   line-height: 2;
+  
+   
 }
 .car span:first-child , .preference span:first-child{
     text-decoration: underline;

@@ -12099,8 +12099,54 @@ main {
   background-color: #9CAF74;
 }
 
-.text-justify {
+.container-text-imag-1, .container-text-imag-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+  padding: 24px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.container-text-left, .container-imag-right, .container-text-right, .container-imag-left {
+  flex: 1 1;
+}
+
+.container-imag-right, .container-imag-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-text-left, .container-text-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-text-imag-1 {
   background-color: #9CAF74;
+}
+
+.text-left, h3, .h3 {
+  justify-content: center;
+}
+
+.imag-left {
+  width: 400px;
+}
+
+@media (max-width: 767px) {
+  .container-text-imag-1, .container-text-imag-2 { /* En dessous de 768px (Mobile) */
+    flex-direction: column; /* Passe en colonne pour mobile */
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+  }
 }
 
 .search-container2 {
@@ -12207,6 +12253,10 @@ p {
     width: 90%;
   }
 }
+.cardCarPreference {
+  height: 500px;
+}
+
 .cardCarPreference .car, .preference {
   padding-left: 20px;
   line-height: 2;
