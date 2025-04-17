@@ -6,6 +6,7 @@
     font-family: $font-family-serif;
     font-weight: 300;
     font-style: oblique;
+    color: $background;
  }
 
  h1{
@@ -24,6 +25,9 @@
     font-family: $font-family-sans-serif; 
  }
 
+body{
+    background-color:$background;
+}
 
  //HTML
 
@@ -35,43 +39,34 @@ html{
 main{
     margin-bottom: 165px;
 }
- //PAGE ACCEUIL - navbar
- .navbar {
-    padding: 10px 15px; // Ajoute un peu d’espace pour éviter que les éléments ne se serrent trop
-     
+ //HOME-NAVBAR
+ 
+.nav-link{
+    color: $background;
 }
-.navbar-nav {
-    gap: 20px; /* Ajuste l'espacement entre les éléments */
-       
+.nav-link:hover{
+    color: $tertiary;
 }
-.navbar-nav li:last-child {
-    margin-right: 40px; /* Évite un espace inutile à la fin */
+.nav-item{
+    padding-right: 50px;
 }
-.navbar-nav .nav-link {
-    color: white !important; /* Force la couleur blanche */
+ 
+//HOME-MENU BURGER
+.navbar-toggler{
+    border-color: $background; // Bordure blanche du bouton
+    color: $background;
+    margin-inline-start: 20%;
 }
-.navbar-nav .nav-link:hover {
-    color: #ddd !important; /* Légère variation au survol */
-}
-
-//menu burger
-.navbar-toggler {
-    border-color: white !important; // Bordure blanche du bouton
-     margin-inline-start: 20%;
-}
-.navbar-toggler-icon {
-    filter: invert(1); // Rend l'icône blanche 
-}
-
+ 
 .container-fluid ,.img{
-   padding-left: 30px;
+   padding-left: 40px;
 }
 
-//PAGE ACCUEIL-Conteneur trajet 
+//HOME- COVOITURAGE -container-trajet-date
  
 .search-container,.search-container2{
     display: flex;
-    flex-direction: row; /* Par défaut : en ligne (Desktop) */
+    flex-direction: row;  
     justify-content: center;
     gap: 15px;
     width: 100%;
@@ -92,11 +87,13 @@ main{
 .input-group {
     display: flex;
     align-items:center;
+    align-content: center;
     background-color:$secondary;  
     padding: 12px 15px;
     border-radius: 27px;
     width: 100%;
     max-width: 360px;
+    height:50px;
     border: 1px solid #4F4F4F;
     transition: 0.3s;
 
@@ -130,18 +127,63 @@ main{
 .search-button button:hover {
     background-color:  $primary;
 }
-//PAGE ACCUEIL -contenaire texte -image
+ 
+//HOME-CONTAINER-TEXT-IMAG
 
-.text-justify{
-//text-align: justify;
-background-color: $primary; 
+.container-text-imag-1, .container-text-imag-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: auto;
+    padding: 24px;
+   margin-left: 150px;
+   margin-right: 150px;
+    
+}
+.container-text-left, .container-imag-right,.container-text-right, .container-imag-left{
+    flex: 1 1;
+}
+
+.container-imag-right,.container-imag-left{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+}
+
+.container-text-left,.container-text-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-text-imag-1{
+    background-color: $primary;
+}
+ .text-left,h3{
+    justify-content: center;    
+}
+
+.imag-left{
+    width:400px ;
+}
+
+ .container-text-imag-1,.container-text-imag-2 
+ {
+    @media (max-width: 767px) { /* En dessous de 768px (Mobile) */
+        flex-direction: column; /* Passe en colonne pour mobile */
+        justify-content: space-between;  
+        padding: 5px;
+         margin-bottom: 10px;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         margin: auto;
+    }
 }
 
 
 // PAGE COVOITURAGE -filtre
 
 .search-container2{
-    padding: 40px;
     padding: 40px;
 }
 
@@ -151,15 +193,14 @@ background-color: $primary;
     padding: 0 15px; /* Ajuste l'espacement intérieur */
     width: 100%; /* Largeur selon le texte */   
 }
- 
-.filter-container ,.dropdown ,.search-button2 button {
+  
+ .filter-container ,.dropdown ,.search-button2 button {
     display: flex;
     flex-direction: row;  
     justify-content:space-around;
     align-items: center;
     gap:10px;
     width: 100%;
-    //max-width: 100%;
     padding: 5px;
     margin-bottom: 10px;
     padding-top: 20px;
@@ -169,9 +210,7 @@ background-color: $primary;
         flex-direction: column; /* Passe en colonne pour mobile */
         justify-content: space-between;  
     }
-}
- 
-
+} 
 
 // PAGE CONVOITURAGE -liste covoiturage
 
@@ -215,12 +254,7 @@ background-color: $primary;
 .card{
     text-align: center;
 }
-
-p {
-    background:$background;
-    margin: 20px 0;
-}
-
+ 
 button {
     background: $tertiary;
     border: none;
@@ -238,9 +272,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; // espace entre input et image
+    gap: 1rem; // espace entre input et image ou 40px
     flex-wrap: wrap; // permet de passer en colonne sur petits écrans
     padding: 1rem;
+}
+p{
+    background-color: $background;
 }
 
 @media (max-width: 600px) {
@@ -252,9 +289,15 @@ button {
  
 //PAGE VUE DETAILLEE COVOITURAGE -card
 
+.cardCarPreference{
+    height: 500px;
+}
+
 .cardCarPreference .car ,.preference{
   padding-left: 20px;
   line-height: 2;
+  
+   
 }
 .car span:first-child , .preference span:first-child{
     text-decoration: underline;
@@ -262,7 +305,7 @@ button {
 }
 
 .cardAvis {
-    max-height: 535.6px; /* Hauteur max avant scroll */
+    max-height: 500px; /* Hauteur max avant scroll */
     overflow-y: auto; /* Ajoute un scroll vertical */
     border: 1px solid #ccc;
     padding: 10px;
@@ -294,7 +337,6 @@ button {
  
 button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-primary {
     min-width: 220px;
-    //font-weight: bold;
     border-radius: 8px;
      margin-inline-start: auto;
      
@@ -306,10 +348,6 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-
 
 
 //MON ESPACE
-
-.profileAccount{
-    gap:40px;
-}
 
 .etatUtilisateur {
     background-color: $primary;
@@ -333,15 +371,13 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
-      justify-content: center;  // centre verticalement
- // align-items: center;      // centre horizontalement
-  text-align: center;
+         justify-content: center;  // centre verticalement
    
         h3 {
           font-size: 1.3rem;
           margin-bottom: 1.5rem;
           color: #1f1f1f;
-          font-family: 'Cabin', sans-serif;
+          font-family: $font-family-sans-serif;
         }
       }
     }
@@ -424,10 +460,9 @@ footer.footer{
     width: 100%;
 }
 .footer a {
-    color: white !important;  /* Forcer la couleur blanche */
-    text-decoration: none;     /* Enlever le soulignement */
+    text-decoration: none;   
 }
 
 .footer a:hover {
-    color: #ddd !important; /* Légère variation au survol */
+    color: $tertiary; 
 }
