@@ -62,9 +62,9 @@ main{
    padding-left: 40px;
 }
 
-//HOME- COVOITURAGE -container-trajet-date
+//HOME-container-trajet-date
  
-.search-container,.search-container2{
+.search-container{
     display: flex;
     flex-direction: row;  
     justify-content: center;
@@ -79,7 +79,6 @@ main{
         justify-content: space-between;
     }
 }
-
 .search-container{
     margin-top: 30px;
 }
@@ -110,24 +109,11 @@ main{
     }
 }
 
-.search-button button,.search-button2  {
-    display: inline-block;
-    margin: 0 auto;
-    background-color:$tertiary;
-    color: black;
-    border: none;
-    padding: 10px 25px;
-    font-weight: bold;
-    border-radius: 19px;
-    width: 100%;
-    max-width: 380px;
-    cursor: pointer;
-}
-
 .search-button button:hover {
     background-color:  $primary;
 }
- 
+
+
 //HOME-CONTAINER-TEXT-IMAG
 
 .container-text-imag-1, .container-text-imag-2{
@@ -181,20 +167,29 @@ main{
 }
 
 
-// PAGE COVOITURAGE -filtre
-
-.search-container2{
-    padding: 40px;
+//COVOITURAGE -FILTRE
+.search-button button,.search-button-filter  {
+    display: inline-block;
+    margin: 0 auto;
+    background-color:$tertiary;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 19px;
+    width: 100%;
+    max-width: 380px;
+    cursor: pointer;
 }
-
-.btn-secondary.dropdown-toggle, .button .search-button2 {
+ 
+.btn-secondary.dropdown-toggle, .button .search-button-filter {
     height: 50px; /* Change la hauteur selon ton besoin */
     line-height: 50px; /* Centre le texte verticalement */
     padding: 0 15px; /* Ajuste l'espacement intérieur */
     width: 100%; /* Largeur selon le texte */   
 }
   
- .filter-container ,.dropdown ,.search-button2 button {
+ .filter-container ,.dropdown ,.search-button-filter button {
     display: flex;
     flex-direction: row;  
     justify-content:space-around;
@@ -212,7 +207,7 @@ main{
     }
 } 
 
-// PAGE CONVOITURAGE -liste covoiturage
+// PAGE CONVOITURAGE -liste  card-covoiturage
 
 .listCovoiturage {
     font-family: Arial, sans-serif;
@@ -235,14 +230,13 @@ main{
     padding-top: 40px;
 }
 
-.profile{
-    display: flex;
-    flex-direction: row;
-     justify-content: space-around;
-     align-items: center;
-     margin-bottom: 10px;
+//CONVOITURAGE-VUE DETAIL
 
+.card{
+    text-align: center;
 }
+
+//CARD  LES TROIS
 .card, .cardCarPreference ,.cardAvis{
     background: $secondary;
     padding: 20px 0;
@@ -251,59 +245,26 @@ main{
     padding-top: 20px;
     padding-bottom: 50px;
 }
-.card{
-    text-align: center;
-}
- 
-button {
-    background: $tertiary;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    color:  black;
-    font-weight: bold;
-    width: 50%;
-    margin-left: 80px; 
-    margin-top: 20px;
-}
 
-.profileAccount {
+// CARD TRAJET PROPOSER
+.profile{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem; // espace entre input et image ou 40px
-    flex-wrap: wrap; // permet de passer en colonne sur petits écrans
-    padding: 1rem;
-}
-p{
-    background-color: $background;
+    flex-direction: row;
+     justify-content: space-around;
+     align-items: center;
+     margin-bottom: 10px;
 }
 
-@media (max-width: 600px) {
-    .container {
-        grid-template-columns: 1fr;
-        width: 90%;
-    }
-}
- 
-//PAGE VUE DETAILLEE COVOITURAGE -card
-
+//CARD PREFERENCES
 .cardCarPreference{
     height: 500px;
 }
-
 .cardCarPreference .car ,.preference{
   padding-left: 20px;
   line-height: 2;
-  
-   
 }
-.car span:first-child , .preference span:first-child{
-    text-decoration: underline;
-    font-weight: bold;
-}
-
+ 
+// CARD AVIS
 .cardAvis {
     max-height: 500px; /* Hauteur max avant scroll */
     overflow-y: auto; /* Ajoute un scroll vertical */
@@ -318,7 +279,60 @@ p{
   scrollbar-color: $tertiary $tertiary; /* (Couleur de la barre, Couleur du fond) */
 }
 
-// CONNECTION
+
+button {
+    background: $tertiary;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    color:  black;
+    font-weight: bold;
+    width: 50%;
+    margin-left: 80px; 
+    margin-top: 20px;
+}
+
+p{
+    background-color: $background;
+}
+
+.profileAccount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; // espace entre input et image ou 40px
+    flex-wrap: wrap; // permet de passer en colonne sur petits écrans
+    padding: 1rem;
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+}
+ 
+// CONNECTION / SIGNIN  //INSCRIPTION / SIGNINUP
+.for-signinup, .for-signin {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    color: $primary;
+  }
+  
+  .for-signinup a , .for-signin a{
+    color: black;
+    text-decoration: underline;
+    display: inline-block;
+  }
+  
+  .btn-signin, .btn-signinup{
+    text-align: center;
+  }
+  
+
+ //ACCOUNT
 
 .form-label{
     margin-top: 20px;
@@ -407,7 +421,7 @@ button.btn.btn-danger,button.btn.btn-primary,button.btn.btn-tertiary, a.btn.btn-
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    width: 100%; /* ✅ prend toute la largeur */
+    width: 100%; /*  prend toute la largeur */
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;

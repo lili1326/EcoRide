@@ -12026,7 +12026,7 @@ main {
   padding-left: 40px;
 }
 
-.search-container, .search-container2 {
+.search-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12037,7 +12037,7 @@ main {
   margin-bottom: 10px;
 }
 @media (max-width: 767px) {
-  .search-container, .search-container2 { /* En dessous de 768px (Mobile) */
+  .search-container { /* En dessous de 768px (Mobile) */
     flex-direction: column; /* Passe en colonne pour mobile */
     justify-content: space-between;
   }
@@ -12069,20 +12069,6 @@ main {
   border: none;
   background: transparent;
   max-width: 150px;
-}
-
-.search-button button, .search-button2 {
-  display: inline-block;
-  margin: 0 auto;
-  background-color: #D88C00;
-  color: black;
-  border: none;
-  padding: 10px 25px;
-  font-weight: bold;
-  border-radius: 19px;
-  width: 100%;
-  max-width: 380px;
-  cursor: pointer;
 }
 
 .search-button button:hover {
@@ -12139,18 +12125,28 @@ main {
   }
 }
 
-.search-container2 {
-  padding: 40px;
+.search-button button, .search-button-filter {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #D88C00;
+  color: black;
+  border: none;
+  padding: 10px 25px;
+  font-weight: bold;
+  border-radius: 19px;
+  width: 100%;
+  max-width: 380px;
+  cursor: pointer;
 }
 
-.btn-secondary.dropdown-toggle, .button .search-button2 {
+.btn-secondary.dropdown-toggle, .button .search-button-filter {
   height: 50px; /* Change la hauteur selon ton besoin */
   line-height: 50px; /* Centre le texte verticalement */
   padding: 0 15px; /* Ajuste l'espacement intérieur */
   width: 100%; /* Largeur selon le texte */
 }
 
-.filter-container, .dropdown, .search-button2 button {
+.filter-container, .dropdown, .search-button-filter button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -12163,7 +12159,7 @@ main {
   padding-bottom: 20px;
 }
 @media (max-width: 767px) {
-  .filter-container, .dropdown, .search-button2 button { /* En dessous de 768px (Mobile) */
+  .filter-container, .dropdown, .search-button-filter button { /* En dessous de 768px (Mobile) */
     flex-direction: column; /* Passe en colonne pour mobile */
     justify-content: space-between;
   }
@@ -12190,12 +12186,8 @@ main {
   padding-top: 40px;
 }
 
-.profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 10px;
+.card {
+  text-align: center;
 }
 
 .card, .cardCarPreference, .cardAvis {
@@ -12207,8 +12199,34 @@ main {
   padding-bottom: 50px;
 }
 
-.card {
-  text-align: center;
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cardCarPreference {
+  height: 500px;
+}
+
+.cardCarPreference .car, .preference {
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.cardAvis {
+  max-height: 500px; /* Hauteur max avant scroll */
+  overflow-y: auto; /* Ajoute un scroll vertical */
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%; /* Largeur adaptative */
+  max-width: 400px; /* Empêche qu'elle devienne trop large */
+  margin: 0 auto; /* Centre la div */
+  /* Scroll personnalisé pour Firefox */
+  scrollbar-width: thin; /* Taille de la barre */
+  scrollbar-color: #D88C00 #D88C00; /* (Couleur de la barre, Couleur du fond) */
 }
 
 button {
@@ -12224,6 +12242,10 @@ button {
   margin-top: 20px;
 }
 
+p {
+  background-color: #E5E9DF;
+}
+
 .profileAccount {
   display: flex;
   align-items: center;
@@ -12233,41 +12255,27 @@ button {
   padding: 1rem;
 }
 
-p {
-  background-color: #E5E9DF;
-}
-
 @media (max-width: 600px) {
   .container {
     grid-template-columns: 1fr;
     width: 90%;
   }
 }
-.cardCarPreference {
-  height: 500px;
+.for-signinup, .for-signin {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  color: #9CAF74;
 }
 
-.cardCarPreference .car, .preference {
-  padding-left: 20px;
-  line-height: 2;
-}
-
-.car span:first-child, .preference span:first-child {
+.for-signinup a, .for-signin a {
+  color: black;
   text-decoration: underline;
-  font-weight: bold;
+  display: inline-block;
 }
 
-.cardAvis {
-  max-height: 500px; /* Hauteur max avant scroll */
-  overflow-y: auto; /* Ajoute un scroll vertical */
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 100%; /* Largeur adaptative */
-  max-width: 400px; /* Empêche qu'elle devienne trop large */
-  margin: 0 auto; /* Centre la div */
-  /* Scroll personnalisé pour Firefox */
-  scrollbar-width: thin; /* Taille de la barre */
-  scrollbar-color: #D88C00 #D88C00; /* (Couleur de la barre, Couleur du fond) */
+.btn-signin, .btn-signinup {
+  text-align: center;
 }
 
 .form-label {
@@ -12348,7 +12356,7 @@ button.btn.btn-tertiary {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 100%; /* ✅ prend toute la largeur */
+  width: 100%; /*  prend toute la largeur */
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
