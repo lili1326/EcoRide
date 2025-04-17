@@ -2,7 +2,9 @@ import Route from "./Route.js";
 import { allRoutes, websiteName } from "./allRoutes.js";
 
 // Création d'une route pour la page 404 (page introuvable)
-const route404 = new Route("404", "Page introuvable", "/pages/404.html",[]);
+//const route404 = new Route("404", "Page introuvable", "/pages/404.html",[]);
+
+
 
 // Fonction pour récupérer la route correspondant à une URL donnée
 const getRouteByUrl = (url) => {
@@ -20,6 +22,7 @@ const getRouteByUrl = (url) => {
     return route404;
   }
 };
+
 
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
@@ -48,17 +51,7 @@ const LoadContentPage = async () => {
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
 
-  // Ajout du contenu JavaScript
-  //if (actualRoute.pathJS != "") {
-    // Création d'une balise script
-   // var scriptTag = document.createElement("script");
-   // scriptTag.setAttribute("type", "text/javascript");
-    //scriptTag.setAttribute("src", actualRoute.pathJS);
-    //scriptTag.setAttribute("defer", true); // pour être sûr qu’il se charge après l’injection HTML
   
-    // Ajout de la balise script au corps du document
-   // document.querySelector("body").appendChild(scriptTag);
-//}
 
 // Attendre que le HTML soit bien rendu avant d'exécuter le JS
 setTimeout(() => {
@@ -81,46 +74,43 @@ setTimeout(() => {
   showAndHideElementsForRoles();
 };
 
+ 
 
-
-// Fonction pour gérer les événements de routage (clic sur les liens)
-//const routeEvent = (event) => {
- // event = event || window.event;
- // event.preventDefault();
-  // Mise à jour de l'URL dans l'historique du navigateur
- // window.history.pushState({}, "", event.target.href);
-  // Chargement du contenu de la nouvelle page
-//  LoadContentPage();
-//};
-
-//fonction pour que au onclic le routeur se déclenche
+//fonction pour que au onclic le routeur se déclenche-gérer la navigation-et ajouter une vérification pour certaines actions protégées
 const routeEvent = (event) => {
   event.preventDefault();
 
-  let url = event.target.getAttribute("data-url");
-  if (!url) {
-    url = event.target.closest("button").getAttribute("data-url");
-  }
+  //on stock dans target l’élément cliqué
+  let target = event.target;
+  //récupérer l’attribut personnalisé data-url qui contient le chemin vers la page à charger.
+  let url = target.getAttribute("data-url");
 
-  if (url) {
-    window.history.pushState({}, "", url);
-    LoadContentPage(); // Recharge la page avec le bon contenu
+  if (!url) return;
+
+  // Vérifie si ce bouton demande une connexion (data-protected="true")
+  const isProtected = target.getAttribute("data-protected") === "true";
+
+  //Si l’action est protégée et que l’utilisateur n’est pas connecté-on le redirige vers la page d’inscription
+  if (isProtected && !isConnected()) {
+    alert("Vous devez être connecté(e) pour accéder à cette fonctionnalité.");
+    window.location.href = "/signinup";
+    return;
   }
+  // Si tout est ok, on met à jour l'URL et on charge la page
+  window.history.pushState({}, "", url);
+  //charger la page 
+  LoadContentPage();
 };
 
+//rends la fonction routeEvent() accessible globalement dans la page sous le nom route
 window.route = routeEvent;
-
-
-
-
-
-
-
-
 // Gestion de l'événement de retour en arrière dans l'historique du navigateur
 window.onpopstate = LoadContentPage;
 // Assignation de la fonction routeEvent à la propriété route de la fenêtre
 window.route = routeEvent;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
+ 
+
+
  
