@@ -61,6 +61,21 @@ setTimeout(() => {
     scriptTag.setAttribute("src", actualRoute.pathJS);
     document.body.appendChild(scriptTag);
     console.log("Script ajouté dynamiquement :", actualRoute.pathJS);
+     // ✅ Appel de la fonction init une fois le script chargé
+     scriptTag.onload = () => {
+      const routeName = actualRoute.url.split("/").pop(); // ex: 'covoiturage'
+      const initFnName = `init${routeName.charAt(0).toUpperCase() + routeName.slice(1)}`; // ex: 'initCovoiturage'
+
+      if (typeof window[initFnName] === 'function') {
+        window[initFnName]();
+        console.log(`✅ ${initFnName}() exécutée`);
+      } else {
+        console.warn(`⚠️ ${initFnName}() non trouvée dans le script chargé.`);
+      }
+    };
+
+    document.body.appendChild(scriptTag);
+    console.log("Script ajouté dynamiquement :", actualRoute.pathJS);
   }
 }, 50); // petit délai pour laisser le temps au DOM d'être intégré
 
