@@ -1,96 +1,34 @@
-const express = require('express');          // Framework pour créer le serveur/API
-const mysql = require('mysql2');             // Module pour connecter à MySQL
-const cors = require('cors');                // Pour autoriser les appels frontend
-require('dotenv').config();                  // Pour lire le .env
+// Importe Express pour créer le serveur
+const express = require('express');
 
-const app = express();                       // On initialise Express
-const PORT = process.env.PORT || 3001;       // On récupère le port depuis le .env
+// CORS permet à ton frontend d'accéder à ton backend même s'ils ne sont pas sur le même port
+const cors = require('cors');
 
-// On crée la connexion MySQL avec les infos .env pour crér la connection
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+// Charge les variables d’environnement depuis le fichier .env
+require('dotenv').config();
 
- //  Test rapide pour confirmer que la connexion fonctionne
-db.query("SELECT 1", (err) => {
-  if (err) {
-    console.error(" Connexion MySQL échouée :", err.message);
-  } else {
-    console.log(" Connexion MySQL opérationnelle !");
-  }
-});
+// Importe les routes des trajets depuis le dossier routes
+const trajetRoutes = require('./routes/trajetRoutes');
 
-app.use(cors());                // Autorise les requêtes depuis le frontend
-app.use(express.json());        // Autorise les données JSON dans les requêtes
+// Initialise l'application Express
+const app = express();
 
-// Route test
-app.get('/api', (req, res) => {
-  res.send("Hello depuis EcoRide backend ");
-});
+// Définit le port (soit via .env, soit par défaut 3001)
+const PORT = process.env.PORT || 3001;
 
-// === API POST /api/vehicules ===
-app.post('/api/vehicules', (req, res) => {
-  const { user_id, marque, modele, energie, plaque, date_immat, couleur, places, type } = req.body;
+// Active CORS pour autoriser les requêtes entre serveurs (front ↔ back)
+app.use(cors());
 
-  const sql = `
-    INSERT INTO vehicules (user_id, marque, modele, energie, plaque, date_immat, couleur, places, type)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `;
+// Autorise le serveur à comprendre les requêtes JSON
+app.use(express.json());
 
-  db.query(sql, [user_id, marque, modele, energie, plaque, date_immat, couleur, places, type], (err, result) => {
-    if (err) {
-      console.error(" Erreur ajout véhicule :", err.message);
-      return res.status(500).json({ error: err.message });
-    }
-    res.status(201).json({ message: " Véhicule ajouté", vehicule_id: result.insertId });
-  });
-});
+// Test route pour voir si le backend tourne
+app.get('/api', (req, res) => res.send("Hello depuis EcoRide backend"));
 
+// Routes MVC Utilise les routes de l’application (trajets ici), préfixées par /api
+app.use('/api', trajetRoutes);
 
-// Lancement du serveur
+// Lance le serveur
 app.listen(PORT, () => {
-  console.log(` Serveur lancé sur http://localhost:${PORT}`);
-});
-
-
-//Crée une route pour ajouter un trajet (POST /api/trajets)
-
-app.post('/api/trajets', (req, res) => {
-  const { depart, arrivee, places, prix, date, horaire, energie, conducteur_id, vehicule_id } = req.body;
-
-  const sql = `
-    INSERT INTO trajets (depart, arrivee, places, prix, date, horaire, energie, conducteur_id, vehicule_id)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `;
-
-  db.query(sql, [depart, arrivee, places, prix, date, horaire, energie, conducteur_id, vehicule_id], (err, result) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.status(201).json({ message: 'Trajet ajouté', id: result.insertId });
-  });
-});
-
-// Crée une route pour récupérer les trajets (GET /api/trajets)
-app.get('/api/trajets', (req, res) => {
-  const sql = `
-   SELECT 
-  t.*, 
-  u.pseudo AS conducteur_pseudo
-FROM trajets t
-JOIN users u ON t.conducteur_id = u.id;
-  `;
-
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error("Erreur dans /api/trajets :", err.message);
-      return res.status(500).json({ error: err.message });
-    }
-    res.json(results);
-  });
+  console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });

@@ -1,27 +1,32 @@
 function initCovoiturage() {
-  console.log("✅ Page covoiturage initialisée");
+  console.log("🚗 Page covoiturage chargée");
 
   const listSection = document.getElementById('listCovoiturage');
   const filter = document.getElementById('filter-container');
   const container = document.querySelector('.containerList');
+  const messageDiv = document.getElementById('messageTrajet');
 
-  // === Fonction d'affichage des trajets ===
+  // 🔧 Convertit JJ/MM/AAAA vers AAAA-MM-DD (optionnel selon input type)
+  function convertirEnISO(dateFr) {
+    const [jour, mois, annee] = dateFr.split('/');
+    return `${annee}-${mois.padStart(2, '0')}-${jour.padStart(2, '0')}`;
+  }
+
+  // 🔍 Affiche les trajets (ou message si vide)
   function afficherTrajets(trajets) {
-    container.innerHTML = ''; // Nettoyage avant nouvel affichage
+    container.innerHTML = ''; // On vide la liste
 
     if (trajets.length === 0) {
-      // 🔴 Aucun trajet trouvé → On masque les filtres mais on affiche le container
+      listSection.style.display = 'none';
       filter.style.display = 'none';
-      listSection.style.display = 'block'; // on garde visible pour afficher le message
-      container.innerHTML = `
-        <div class="no-result" style="color:#555; text-align:center; padding:20px;">
-          🚫 Aucun trajet trouvé pour cette recherche.
-        </div>
-      `;
+
+
+    //  Affiche un message dans la div dédiée
+    messageDiv.innerHTML = ' Aucun trajet trouvé.';
       return;
     }
 
-    // ✅ Trajets trouvés → affichage complet
+    // ✅ Sinon on affiche les blocs trajets et filtres
     listSection.style.display = 'block';
     filter.style.display = 'block';
 
@@ -33,7 +38,7 @@ function initCovoiturage() {
           <h3>${t.conducteur_pseudo || "Conducteur"}</h3>
           <img src="/assets/images/avatar.png" alt="Avatar" width="70px">
         </div>
-        <p><strong>${t.depart}</strong> → <strong>${t.arrivee}</strong></p>
+        <p><strong>${t.depart}</strong> ----> <strong>${t.arrivee}</strong></p>
         <p><strong>Places :</strong> ${t.places ?? '?'}</p>
         <p><strong>Prix :</strong> ${t.prix} €</p>
         <p><strong>Date :</strong> ${new Date(t.date).toLocaleDateString()}</p>
@@ -44,7 +49,7 @@ function initCovoiturage() {
     });
   }
 
-  // === Récupère les trajets depuis l'API et filtre selon les champs ===
+  // 🔁 Récupère les trajets et applique les filtres
   function chargerTrajetsEtFiltrer() {
     fetch('http://localhost:3001/api/trajets')
       .then(res => res.json())
@@ -57,31 +62,26 @@ function initCovoiturage() {
           const matchDepart = !depart || t.depart.toLowerCase().includes(depart);
           const matchArrivee = !arrivee || t.arrivee.toLowerCase().includes(arrivee);
           const matchDate = !dateInput || new Date(t.date).toISOString().slice(0, 10) === dateInput;
-
           return matchDepart && matchArrivee && matchDate;
         });
 
         afficherTrajets(filtres);
       })
       .catch(err => {
-        console.error("❌ Erreur de fetch :", err);
-        container.innerHTML = '<p style="color: red;">Erreur lors du chargement des trajets.</p>';
-        listSection.style.display = 'block';
-        filter.style.display = 'none';
+        console.error("❌ Erreur de chargement des trajets :", err);
+        container.innerHTML = '<p>Erreur lors du chargement des trajets.</p>';
       });
   }
 
-  // 🔍 Bouton recherche cliqué → on lance la recherche
+  // 🟢 Lancer la recherche au clic
   document.getElementById('btn-recherche')?.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("🔍 Recherche lancée !");
+    console.log("🔍 Recherche lancée...");
     chargerTrajetsEtFiltrer();
   });
 
-  // 🔒 Au démarrage, on masque les résultats et les filtres
-  listSection.style.display = 'none';
-  filter.style.display = 'none';
-  container.innerHTML = '';
+  // 🔕 NE PAS charger directement au démarrage
+  // chargerTrajetsEtFiltrer(); ← on l’enlève pour ne rien afficher tant que pas de recherche
 }
 
 window.initCovoiturage = initCovoiturage;

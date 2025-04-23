@@ -59,6 +59,15 @@ setTimeout(() => {
     const scriptTag = document.createElement("script");
     scriptTag.setAttribute("type", "module");
     scriptTag.setAttribute("src", actualRoute.pathJS);
+
+    // Appelle automatiquement init après chargement du JS
+    scriptTag.onload = () => {
+      if (typeof window.initCovoiturage === "function") {
+        window.initCovoiturage();
+      }
+      // Tu peux ajouter d'autres init ici selon les pages plus tard
+    };
+
     document.body.appendChild(scriptTag);
     console.log("Script ajouté dynamiquement :", actualRoute.pathJS);
      // ✅ Appel de la fonction init une fois le script chargé
