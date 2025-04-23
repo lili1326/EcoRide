@@ -16,14 +16,14 @@
   </div>
   <div class="input-group">
       <i class="bi bi-calendar-date"></i>
-      <input type="date">
+      <input type="date" id="date">
   </div>
 </div>
 <div class="search-button text-center pt-2 p-3">
-  <button>Recherche</button>
+  <button id="btn-recherche">Recherche</button>
 </div> 
 
-<div class="filter-container">
+<div class="filter-container"id="filter-container" style="display: none;">
     <div class="dropdown ">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Note conducteur:
@@ -73,7 +73,7 @@
   </div> 
 </div>
 
-<section class="listCovoiturage">
+<section class="listCovoiturage"id="listCovoiturage" style="display: none;">
 <div class="containerList">
   <div class="card">
       <div class="profile">
@@ -115,4 +115,6 @@
       <button onclick="route(event)" data-url="/vueDetaileeCovoiturage">Détail</button>  
   </div>
 </div>
+
 </section>
+<div id="messageTrajet" class="message-trajet" style="text-align: center; margin-top: 20px;"></div>

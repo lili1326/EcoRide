@@ -1,38 +1,34 @@
-const express = require('express');          // Framework pour créer le serveur/API
-const mysql = require('mysql2');             // Module pour connecter à MySQL
-const cors = require('cors');                // Pour autoriser les appels frontend
-require('dotenv').config();                  // Pour lire le .env
+// Importe Express pour créer le serveur
+const express = require('express');
 
-const app = express();                       // On initialise Express
-const PORT = process.env.PORT || 3001;       // On récupère le port depuis le .env
+// CORS permet à ton frontend d'accéder à ton backend même s'ils ne sont pas sur le même port
+const cors = require('cors');
 
-// On crée la connexion MySQL avec les infos .env
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
+// Charge les variables d’environnement depuis le fichier .env
+require('dotenv').config();
 
-// On tente de se connecter à MySQL
-db.connect((err) => {
-  if (err) {
-    console.error(" Erreur de connexion :", err.message);
-  } else {
-    console.log(" Connecté à MySQL !");
-  }
-});
+// Importe les routes des trajets depuis le dossier routes
+const trajetRoutes = require('./routes/trajetRoutes');
 
-app.use(cors());                // Autorise les requêtes depuis le frontend
-app.use(express.json());        // Autorise les données JSON dans les requêtes
+// Initialise l'application Express
+const app = express();
 
-// Route test
-app.get('/api', (req, res) => {
-  res.send("Hello depuis EcoRide backend ");
-});
+// Définit le port (soit via .env, soit par défaut 3001)
+const PORT = process.env.PORT || 3001;
 
-// Lancement du serveur
+// Active CORS pour autoriser les requêtes entre serveurs (front ↔ back)
+app.use(cors());
+
+// Autorise le serveur à comprendre les requêtes JSON
+app.use(express.json());
+
+// Test route pour voir si le backend tourne
+app.get('/api', (req, res) => res.send("Hello depuis EcoRide backend"));
+
+// Routes MVC Utilise les routes de l’application (trajets ici), préfixées par /api
+app.use('/api', trajetRoutes);
+
+// Lance le serveur
 app.listen(PORT, () => {
-  console.log(` Serveur lancé sur http://localhost:${PORT}`);
+  console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
