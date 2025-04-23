@@ -6,21 +6,24 @@ require('dotenv').config();                  // Pour lire le .env
 const app = express();                       // On initialise Express
 const PORT = process.env.PORT || 3001;       // On récupère le port depuis le .env
 
-// On crée la connexion MySQL avec les infos .env
-const db = mysql.createConnection({
+// On crée la connexion MySQL avec les infos .env pour crér la connection
+const db = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-// On tente de se connecter à MySQL
-db.connect((err) => {
+ //  Test rapide pour confirmer que la connexion fonctionne
+db.query("SELECT 1", (err) => {
   if (err) {
-    console.error(" Erreur de connexion :", err.message);
+    console.error(" Connexion MySQL échouée :", err.message);
   } else {
-    console.log(" Connecté à MySQL !");
+    console.log(" Connexion MySQL opérationnelle !");
   }
 });
 
